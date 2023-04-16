@@ -1,6 +1,8 @@
 import '@/styles/globals.css'
 import { Montserrat } from 'next/font/google'
 import type { AppProps } from 'next/app'
+import Head from 'next/head'
+import Layout from '@/components/layout/Layout'
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -9,8 +11,17 @@ const montserrat = Montserrat({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={`${montserrat.variable} font-mont`}>
-      <Component {...pageProps} />
-    </main>
+    <>
+      <Head>
+        <meta name='viewport' content='width-device-width, initial-scale=1' />
+        <link rel='icon' href="/favicon.ico" />
+      </Head>
+      <main className={`${montserrat.variable} font-mont bg-light w-full min-h-screen`}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </main>
+    </>
+
   )
 }
