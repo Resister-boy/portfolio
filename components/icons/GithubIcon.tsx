@@ -3,8 +3,8 @@ import { IconType } from "@/types/IconType";
 const GithubIcon = ({ className, ...rest }: IconType) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="1.3em"
-    height="1.3em"
+    width="1em"
+    height="1em"
     viewBox="0 0 512 512"
     {...rest}
     className={`w-full h-auto ${className}`}
