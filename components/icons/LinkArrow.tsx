@@ -1,6 +1,6 @@
 import { IconType } from "@/types/IconType";
 
-export const LinkArrow = ({ className, ...rest }: IconType) => (
+const LinkArrow = ({ className, ...rest }: IconType) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={24}
@@ -20,3 +20,5 @@ export const LinkArrow = ({ className, ...rest }: IconType) => (
     />
   </svg>
 );
+
+export default LinkArrow;

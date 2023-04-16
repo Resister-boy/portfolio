@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { DefaultBtnType } from '@/types/DefaultBtnType'
-import { LinkArrow } from '@/components/icons/LinkArrow'
+import { LinkArrow } from '@/components/icons'
 
 const DefaultButton = ({ link, title, download }: DefaultBtnType) => {
   return (
