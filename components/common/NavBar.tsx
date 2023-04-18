@@ -15,13 +15,13 @@ const NavBar = () => {
       </nav>
       <nav className='flex items-center justify-center flex-wrap'>
         <motion.a href="https://github.com/Resister-boy" target={"_blank"} whileHover={{y: -2}} whileTap={{scale: 0.9}}>
-          <GithubIcon className='w-6 mr-3' />
+          <GithubIcon className='w-8 mr-3' />
         </motion.a>
         <motion.a href="https://www.instagram.com/resister_devlog" target={"_blank"} whileHover={{y: -2}} whileTap={{scale: 0.9}}>
-          <InstagramIcon className="w-6 mr-3" />
+          <InstagramIcon className="w-8 mr-3" />
         </motion.a>
         <motion.a href="https://twitter.com/resister_boy" target={"_blank"} whileHover={{y: -2}} whileTap={{scale: 0.9}}>
-          <TwitterIcon className='w-6 mr-3' />
+          <TwitterIcon className='w-8 mr-3' />
         </motion.a>
       </nav>
     </main>
