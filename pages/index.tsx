@@ -40,17 +40,19 @@ Explore my latest projects and articles, showcasing my expertise in React.js and
             <DefaultButton link="mailto:hassanpumped17@gmail.com" title="Contact" download={false} />
           </div>
         </div>
-        <div className='w-1/2'>
-          <h2 className='font-bold text-2xl'>Recent Commited Ropository</h2>
-        {
-          commits?.map(({name, id, updated_at}: commitType) => {
-            return (
-              <div key={id}>
-                <NewSpeed id={id} updated_at={updated_at} name={name} />
-              </div>   
-            )
-          })
-        }
+        <div className='w-1/2 border border-dark bg-slate-100'>
+          <h2 className='w-full text-center font-bold text-2xl'>Recent Commited Ropository</h2>
+          <div className='w-full flex flex-wrap'>
+            {
+            commits?.map(({name, id, updated_at}: commitType) => {
+              return (
+                <div key={id} className='w-1/2'>
+                  <NewSpeed id={id} updated_at={updated_at} name={name} />
+                </div>   
+              )
+            })
+          }
+          </div>
         </div>
       </main>
     </>

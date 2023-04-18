@@ -4,8 +4,8 @@ export interface INewsFeed {
   isForked?: boolean;
   updated_at?: string;
   message?: string;
+  description?: string;
   owner?: string;
   repoUrl?: string;
   ownerImageUrl?: string;
-  profileUrl?: string;
 }

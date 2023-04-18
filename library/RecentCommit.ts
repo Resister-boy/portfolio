@@ -16,7 +16,7 @@ export const sortRecentRepo = async (count: number) => {
   }))
   return (commitArray.sort(function (a: commitType, b: commitType) {
     return (+new Date(a.updated_at)) - (+new Date(b.updated_at));
-  })).reverse().slice(0, 1)
+  })).reverse().slice(0, count)
 }
 
 export const fetchRecentRepo = async (name: string): Promise<INewsFeed | IError> => {
@@ -27,17 +27,18 @@ export const fetchRecentRepo = async (name: string): Promise<INewsFeed | IError>
     }
   })
   const commitMessage = await fetchCommitMessage(name);
+  console.log(response);
   try {
     return ({
       id: response.data.id,
       name: response.data.name,
       isForked: response.data.fork,
       updated_at: response.data.updated_at,
+      description: response.data.description,
       repoUrl: response.data.url,
       message: commitMessage.response,
       owner: response.data.owner.login,
       ownerImageUrl: response.data.owner.avatar_url,
-      profileUrl: response.data.owner.url,
     })
   } catch (err) {
     console.log(err)

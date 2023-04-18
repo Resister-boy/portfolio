@@ -2,8 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
+    disableStaticImages: true,
     domains: [
-      "img.shields.io"
+      "img.shields.io",
+      "avatars.githubusercontent.com"
     ]
   },
   env: {
