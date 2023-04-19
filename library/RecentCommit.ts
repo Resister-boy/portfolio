@@ -36,6 +36,7 @@ export const fetchRecentRepo = async (name: string): Promise<INewsFeed | IError>
       updated_at: response.data.updated_at,
       description: response.data.description,
       repoUrl: response.data.url,
+      branch: response.data.default_branch,
       message: commitMessage.response,
       owner: response.data.owner.login,
       ownerImageUrl: response.data.owner.avatar_url,

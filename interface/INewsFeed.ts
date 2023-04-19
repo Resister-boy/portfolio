@@ -4,6 +4,7 @@ export interface INewsFeed {
   isForked?: boolean;
   updated_at?: string;
   message?: string;
+  branch?: string;
   description?: string;
   owner?: string;
   repoUrl?: string;

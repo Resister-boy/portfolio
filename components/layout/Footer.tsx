@@ -8,9 +8,7 @@ const Footer = () => {
       <div className='py-8 flex items-center justify-between'>
         <span>{new Date().getFullYear()} &copy; All Rights Reserved.</span>      
         <div className='flex items-center'>
-          Build With 
-          <span className='text-primary text-2xl px-1'>&#9825;</span>
-          by &nbsp;<span>Resister-boy</span>
+          Build by &nbsp;<span>Resister-boy</span>
         </div>
       </div>
     </footer>
