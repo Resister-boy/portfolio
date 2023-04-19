@@ -25,7 +25,10 @@ module.exports = {
         primaryDark: "#58E6D9"
       },
       animation: {
-        'spin-slow': 'spin 3s linear infinite'
+        'spin-slow': 'spin 3s linear infinite',
+      },
+      backgroundImage: {
+        circularLight: 'repeating-radial-gradient(rgba(0, 0, 0, 0.4) 2px, #f5f5f5 5px, #f5f5f5 100px);'
       }
     },   
   },
