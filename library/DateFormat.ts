@@ -19,7 +19,7 @@ const TimeTextMap = {
 
 const createTimeText = (time: number, standard: number, suffix: string) => {
   const duration = Math.floor(time / standard);
-  return (`${duration} ${duration === 1 ? suffix : suffix + 's'} age`) 
+  return (`${duration} ${duration === 1 ? suffix : suffix + 's'} ago`) 
 }
 
 const translateTimeZone = (updated_at: string) => {
@@ -27,8 +27,8 @@ const translateTimeZone = (updated_at: string) => {
     +new Date(
       parseInt(updated_at.slice(0, 4)), 
       parseInt(updated_at.slice(5, 7)) - 1, 
-      parseInt(updated_at.slice(8, 10)), 
-      parseInt(updated_at.slice(11, 13)), 
+      parseInt(updated_at.slice(8, 10)),
+      parseInt(updated_at.slice(11, 13)) + 9,
       parseInt(updated_at.slice(14, 16))
     )
   )
@@ -42,6 +42,6 @@ export const fetchRelatedTime = (updated_at: string) => {
       if (seconds >= value)
         return (createTimeText(seconds, value, TimeTextMap[value]));
       return (text);
-      }, "방금 전")
+      }, "Just before")
   )
 }

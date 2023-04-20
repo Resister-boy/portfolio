@@ -59,9 +59,9 @@ const NewsFeed = ({ name, ...rest }: commitType) => {
       </div>
       <div className={`${isLoading ? 'hidden' : 'w-full my-2 ml-1'}`}>
         <span className='text-xs text-[#B0AEAE] font-medium'>Description..</span>
-        <span className="ml-2 my-2 text-sm text-gray-700 dark:text-gray-400">{parseText("Description", description, 45)}</span><br />
+        <span className="ml-2 my-2 text-sm text-gray-700 dark:text-gray-400">{parseText("Description", description, 35)}</span><br />
         <span className='text-xs text-[#B0AEAE] font-medium'>Commit message..</span>
-        <span className="ml-4 mb-3 text-sm text-gray-700 dark:text-gray-400">{parseText("Commit Message", commitMsg, 45)}</span>
+        <span className="ml-4 mb-3 text-sm text-gray-700 dark:text-gray-400">{parseText("Commit Message", commitMsg, 35)}</span>
       </div>
       <div className={`${isLoading ? 'hidden' : 'flex justify-end items-center mt-1'}`}>
         <span className='text-xs text-[#B0AEAE] font-medium mr-4'>{fetchRelatedTime(`${updatedAt}`)}</span>
