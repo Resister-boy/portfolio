@@ -45,9 +45,9 @@ const NewsFeed = ({ name, ...rest }: commitType) => {
           <h5 className={`${isLoading ? 'hidden' : 'text-[#6F6F6F] hover:underline duration-150 mb-2 text-lg tracking-tight ml-6'}`}>{name}</h5>
         </Link>
         <div className={`${isLoading ? `${styles.skeleton_box}` : 'hidden'}`}/>
-        <div className={`${isLoading ? 'hidden' : 'absolute top-8 right-8 flex'}`}>
+        <div className={`${isLoading ? 'hidden' : 'absolute top-6 right-6 flex'}`}>
           <div className='border-2 border-[#B0AEAE] rounded w-[50px] flex justify-evenly items-center mr-1'>
-            <span className='text-[#B0AEAE] font-semibold text-[10px]'>{branch}</span>
+            <span className='text-[#B0AEAE] font-semibold text-[10px]'>{branch && branch.length > 6 ? branch.slice(0, 6) : branch}</span>
           </div>
           {isForked && (
             <div className='border-2 border-[#9BF072] rounded w-[50px] flex justify-evenly items-center'>
