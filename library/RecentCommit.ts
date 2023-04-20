@@ -9,13 +9,13 @@ export const sortRecentRepo = async (count: number) => {
       Authorization: `token ${process.env.GITHUB_APIKEY}`
     }
   });
-    userCommitInfos.data.map(({ name, id, updated_at }: commitType) => commitArray.push({
+    userCommitInfos.data.map(({ name, id, pushed_at }: commitType) => commitArray.push({
     name,
     id,
-    updated_at,
+    pushed_at,
   }))
   return (commitArray.sort(function (a: commitType, b: commitType) {
-    return (+new Date(a.updated_at)) - (+new Date(b.updated_at));
+    return (+new Date(a.pushed_at)) - (+new Date(b.pushed_at));
   })).reverse().slice(0, count)
 }
 
@@ -27,13 +27,12 @@ export const fetchRecentRepo = async (name: string): Promise<INewsFeed | IError>
     }
   })
   const commitMessage = await fetchCommitMessage(name);
-  console.log(response);
   try {
     return ({
       id: response.data.id,
       name: response.data.name,
       isForked: response.data.fork,
-      updated_at: response.data.updated_at,
+      pushed_at: response.data.pushed_at,
       description: response.data.description,
       repoUrl: response.data.url,
       branch: response.data.default_branch,

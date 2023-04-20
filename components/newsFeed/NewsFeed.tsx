@@ -27,7 +27,7 @@ const NewsFeed = ({ name, ...rest }: commitType) => {
       setIsLoading(true);
       const repo: INewsFeed = await fetchRecentRepo(name);
       setIsForked(repo.isForked);
-      setUpdatedAt(repo.updated_at);
+      setUpdatedAt(repo.pushed_at);
       setCommitMsg(repo.message);
       setOwner(repo.owner);
       setOwnerImgUrl(repo.ownerImageUrl);

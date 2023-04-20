@@ -2,7 +2,7 @@ export interface INewsFeed {
   id?: number;
   name?: string;
   isForked?: boolean;
-  updated_at?: string;
+  pushed_at?: string;
   message?: string;
   branch?: string;
   description?: string;

@@ -2,22 +2,24 @@ import Head from 'next/head'
 import AnimatedText from '@/components/common/AnimatedText'
 import DefaultButton from '@/components/common/button/DefaultButton'
 import { sortRecentRepo } from '@/library/RecentCommit'
-import { ReactNode, useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { motion } from 'framer-motion'
 import NewSpeed from '@/components/newsFeed/NewsFeed'
+import axios from 'axios'
 
 export type commitType = {
   name: string;
   id: number;
-  updated_at: string;
+  pushed_at: string;
 }
 
 export default function Home() {
-
+  const [commits, setCommits] = useState<commitType[] | undefined>([]);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const callFetchRecentCommit = async (count: number) => {
     return setCommits(await sortRecentRepo(count));
   }
 
-  const [commits, setCommits] = useState<commitType[] | undefined>([]);
   useEffect(() => {
     callFetchRecentCommit(3);
   }, [])
@@ -30,20 +32,23 @@ export default function Home() {
       <main className='flex items-center justify-between w-full'>
         <div className='w-1/2 bg-slate-100 mx-28 mt-16 rounded-2xl pt-8 pb-4 shadow-xl mb-24'>
           <h2 className='w-full text-center font-bold text-2xl'>My Recent Code</h2>
-          <div className='w-full h-96 flex justify-center items-center flex-wrap my-4 px-4 overflow-auto scroll-smooth'>
-            {
-            commits?.map(({name, id, updated_at}: commitType) => {
+          <div className='w-full h-96 flex justify-center items-center flex-wrap my-4 px-4 overflow-auto scroll-smooth' ref ={scrollRef}>
+          {
+            commits?.map(({name, id, pushed_at}: commitType) => {
               return (
-                <div key={id} className='w-4/5 mb-4 mx-auto flex justify-center items-center'>
-                  <NewSpeed id={id} updated_at={updated_at} name={name} />
-                </div>   
+                <motion.div key={id} className='w-4/5 mb-4 mx-auto flex justify-center items-center'>
+                  <NewSpeed id={id} pushed_at={pushed_at} name={name} />
+                </motion.div>   
               )
             })
           }
           </div>
           <div className='flex justify-center items-center text-[#B0AEAE] hover:underline duration-150'>
             <button onClick={(() => {
-              callFetchRecentCommit(commits && commits.length <=30 ? commits?.length + 3 : 3);
+                callFetchRecentCommit(commits && commits.length <= 30 ? commits?.length + 3 : 3);
+                if (scrollRef.current !== null) {
+                  scrollRef.current.scrollTop = scrollRef.current.scrollHeight + 40;
+                }
             })} className='flex justify-center'>
               see more
             </button>
