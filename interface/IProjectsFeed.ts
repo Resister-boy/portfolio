@@ -3,6 +3,7 @@ export interface IProjects {
 }
 
 export interface IProject {
+  idx: number;
   id: string;
   last_edited_time: string;
   properties: IProperty;

@@ -10,7 +10,7 @@ const About = () => {
         <title>Resister-boy | About</title>
         <meta name="description" content='any description' />
       </Head>
-      <main className='flex w-full flex-col items-center justify-center'>
+      <main className='flex w-full flex-col items-center justify-center bg-light'>
         <div className='pt-16'>
           <AnimatedText text='Passion Fuels Purpose!' className='text-8xl'/>
           <div className='grid w-full grid-cols-8 gap-16'>

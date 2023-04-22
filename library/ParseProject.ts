@@ -1,10 +1,11 @@
 import { IProjects, IProject, ITech, ITechStack } from "@/interface/IProjectsFeed";
-import { BadgeColorType } from "@/types/BadgeType";
 
 export const parseProject = ( projects: IProjects): IProject[] => {
   let projectList: IProject[] = [];
+  let idx = 1;
   projects.results.map((project: IProject) => {
     projectList.push({
+      idx: idx,
       id: project.id,
       last_edited_time: project.last_edited_time,
       properties: {
@@ -18,6 +19,7 @@ export const parseProject = ( projects: IProjects): IProject[] => {
         TechList: parseTechStack(project.properties.TechStacks.multi_select)
       }
     })
+    idx += 1;
   })
   return (projectList);
 }

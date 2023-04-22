@@ -5,6 +5,7 @@ import { NextPage } from 'next'
 import { ProjectFeed } from '@/components/common/ProjectFeed'
 import { IProject } from '@/interface/IProjectsFeed'
 import { parseProject } from '@/library/ParseProject'
+import ProjectSmallFeed from '@/components/common/ProjectSmallFeed'
 
 const Projects:NextPage<any> = ({ projects }) => {
   const projectList: IProject[] = parseProject(projects);
@@ -17,17 +18,24 @@ const Projects:NextPage<any> = ({ projects }) => {
       </Head>
       <main className='w-full mb-16 flex flex-col items-center'>
         <div className='pt-16'>
-          <AnimatedText text="Imagination Trumps Knowledge!" className='text-6xl'/>
-          <div className='w-1/2 mt-8 grid grid-cols-1 mx-auto'>
+          <AnimatedText text="Imagination Trumps Knowledge!" className='text-6xl mt-12 text-[#333]'/>
+          <div className='w-2/3 mt-8 mx-auto flex flex-wrap justify-between'>
             {projectList.map((project: IProject, index: number) => {
               return (
-                <div key={index} className='mx-4 my-4'>
-                  <ProjectFeed
-                    project={project}
-                  />  
-                </div>
-              )
-            })}
+                project.idx % 3 === 1 ?
+                (
+                <ProjectFeed
+                  key={index}
+                  project={project}
+                />
+                ) : (
+                  <div className={`w-1/2 ${project.idx % 2 === 0 ? 'pr-5' : 'pl-5'}`}>
+                    <ProjectSmallFeed 
+                      key={index}
+                      project={project}
+                    />
+                  </div>
+                ))})}
           </div>
         </div>
       </main>
