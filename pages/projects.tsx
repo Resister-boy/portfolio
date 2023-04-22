@@ -9,7 +9,6 @@ import ProjectSmallFeed from '@/components/common/ProjectSmallFeed'
 
 const Projects:NextPage<any> = ({ projects }) => {
   const projectList: IProject[] = parseProject(projects);
-  console.log(projectList);
   return (
     <>
       <Head>

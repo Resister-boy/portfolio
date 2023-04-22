@@ -1,13 +1,14 @@
 import React from 'react'
 import { BadgeColorType, BadgeType } from '@/types/BadgeType'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 const TechBadge = ({ title }: BadgeType) => {
   return (
-    <div className={`flex justify-center items-center text-xs text-[#fff] py-1 px-2 mr-1 rounded-md ${BadgeColor[title]}`}>
+    <motion.div className={`flex justify-center items-center text-xs text-[#fff] py-1 px-2 mr-1 rounded-md ${BadgeColor[title]}`} whileHover={{y:-1}}>
       <Image src={BadgeIcon[title]} alt={title} title={title} width={13} height={13} className='mr-1.5'/>
       {title}
-    </div>
+    </motion.div>
   )
 }
 
