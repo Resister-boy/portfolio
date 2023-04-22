@@ -34,7 +34,7 @@ const ProjectSmallFeed = ({ project }: IProject | any) => {
         </div>
         <div className='w-full mt-2 flex items-center justify-end'>
           <motion.a href={project.properties.GithubUrl} target='_blank' className='mr-2' whileHover={{y: -2}}>
-            <GithubIcon className='w-10 mr-3' />
+            <GithubIcon className='w-10 mr-4' />
           </motion.a>
           <DefaultButton link={project.properties.DeployUrl} title={`Deploy`} icon={false} className='py-1 px-1 bg-[#878787] text-xs' assets={`/assets/Cancel_Icon.svg`}/>
         </div>

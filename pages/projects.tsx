@@ -28,9 +28,8 @@ const Projects:NextPage<any> = ({ projects }) => {
                   project={project}
                 />
                 ) : (
-                  <div className={`w-1/2 ${project.idx % 2 === 0 ? 'pr-5' : 'pl-5'}`}>
+                  <div className={`w-1/2 ${project.idx % 2 === 0 ? 'pr-5' : 'pl-5'}`} key={index}>
                     <ProjectSmallFeed 
-                      key={index}
                       project={project}
                     />
                   </div>

@@ -14,7 +14,7 @@ export const ProjectFeed = ({ project }: IProject | any) => {
         rounded-3xl bg-light shadow-2xl p-8 rounded-br-3xl'>
       <div className='absolute top-0 left-0 w-[101%] h-[102%] rounded-3xl bg-dark rounded-br-3xl -z-10' />
       <Link href={`projects/${project.id}`} className='w-1/2 cursor-pointer overflow-hidden rounded-lg'>
-        <Image src={project.properties.Image} alt={project.properties.Name} className="w-full h-60" width={100} height={100} />
+        <Image src={project.properties.Image} alt={project.properties.Name} className="w-full h-64" width={100} height={100} />
       </Link>
       <div className='w-1/2 flex flex-col items-start justify-between pl-6'>
         <span className={`text-md ${project.properties.Type ? 'text-primary' : 'text-primaryDark'}`}>{
