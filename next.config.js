@@ -5,7 +5,8 @@ const nextConfig = {
     disableStaticImages: true,
     domains: [
       "img.shields.io",
-      "avatars.githubusercontent.com"
+      "avatars.githubusercontent.com",
+      "gateway.pinata.cloud",
     ]
   },
   env: {

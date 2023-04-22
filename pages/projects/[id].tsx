@@ -13,12 +13,12 @@ interface Props {
 }
 
 const ProjectDetail:NextPage<Props> = ({id, project, blocks}) => {
+  console.log(project);
+  console.log(blocks)
   return (
-    <div>Hello World</div>
+    <main></main>
   )
 }
-
-
 
 export const getStaticProps: GetStaticProps = async (context) => {
   let { id } = context.params as IParams; 

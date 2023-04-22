@@ -3,7 +3,7 @@ import AnimatedText from '@/components/common/AnimatedText'
 import DefaultButton from '@/components/common/button/DefaultButton'
 import { sortRecentRepo } from '@/library/RecentCommit'
 import { useEffect, useRef, useState } from 'react'
-import NewSpeed from '@/components/newsFeed/NewsFeed'
+import NewSpeed from '@/components/common/NewsFeed'
 import ScrollToTopButton from '@/components/common/button/ScrollToTopButton'
 
 export type commitType = {
@@ -61,8 +61,8 @@ export default function Home() {
 Explore my latest projects and articles, showcasing my expertise in React.js and web development.
           </p>
           <div className='flex items-center self-start mt-2'>
-            <DefaultButton link="/dummy.pdf" title="Resume" download={true} />
-            <DefaultButton link="mailto:hassanpumped17@gmail.com" title="Contact" download={false} />
+            <DefaultButton link="/dummy.pdf" title="Resume" icon={true} className='p-2.5 px-6 bg-dark' assets={null} />
+            <DefaultButton link="mailto:hassanpumped17@gmail.com" title="Contact" icon={false} className='p-2.5 px-6 bg-dark' assets={null} />
           </div>
         </div>
       </main>

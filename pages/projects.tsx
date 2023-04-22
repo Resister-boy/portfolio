@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import AnimatedText from '@/components/common/AnimatedText'
+import { NextPage } from 'next'
+import { ProjectFeed } from '@/components/common/ProjectFeed'
+import { IProject } from '@/interface/IProjectsFeed'
+import { parseProject } from '@/library/ParseProject'
 
-const projects = () => {
+const Projects:NextPage<any> = ({ projects }) => {
+  const projectList: IProject[] = parseProject(projects);
+  console.log(projectList);
   return (
     <>
       <Head>
@@ -11,17 +17,17 @@ const projects = () => {
       </Head>
       <main className='w-full mb-16 flex flex-col items-center'>
         <div className='pt-16'>
-          <AnimatedText text="Imagination Trumps Knowledge!" />
-          <div className='grid grid-cols-12 gap-24'>
-            <div className='col-span-12'>
-              Featured Projects
-            </div>
-            <div className='col-span-6'>
-              Prject-1
-            </div>
-            <div className='col-span-6'>
-              Prject-2
-            </div>
+          <AnimatedText text="Imagination Trumps Knowledge!" className='text-6xl'/>
+          <div className='w-1/2 mt-8 grid grid-cols-1 mx-auto'>
+            {projectList.map((project: IProject, index: number) => {
+              return (
+                <div key={index} className='mx-4 my-4'>
+                  <ProjectFeed
+                    project={project}
+                  />  
+                </div>
+              )
+            })}
           </div>
         </div>
       </main>
@@ -29,4 +35,33 @@ const projects = () => {
   )
 }
 
-export default projects
+export const getServerSideProps = async () => {
+  const options = {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json', 
+      'Notion-Version': '2022-02-22',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${process.env.PROJECT_PASSWORD}`
+    },
+    body: JSON.stringify({
+      sorts: [
+          {
+              "property": "Name",
+              "direction": "ascending"
+          }
+      ],
+      page_size: 100
+    })
+  };
+  const response = await fetch(`https://api.notion.com/v1/databases/${process.env.PROJECT_APIKEY}/query`, options)
+  const projects = await response.json()
+  return {
+    props: {
+      projects
+    }
+  }
+}
+
+
+export default Projects

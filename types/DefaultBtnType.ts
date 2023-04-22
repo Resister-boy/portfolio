@@ -1,5 +1,7 @@
 export type DefaultBtnType = {
   link: string;
   title: string;
-  download: boolean;
+  icon: boolean;
+  className: string;
+  assets: string | null;
 }

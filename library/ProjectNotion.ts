@@ -1,12 +1,12 @@
 import { Client } from '@notionhq/client';
 
 const client = new Client({
-    auth: process.env.PROJECT_DATABASE_APIKEY,
+    auth: process.env.PROJECT_PASSWORD,
 });
 
 const projectDatabase = async() => {
     const myPosts = await client.databases.query({
-        database_id: `${process.env.PROJECT_DATABASE_ID}`,
+        database_id: `${process.env.PROJECT_APIKEY}`,
     });
     return myPosts;
 }
