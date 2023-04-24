@@ -1,9 +1,9 @@
-import { IProjects, IProject, ITech, ITechStack } from "@/interface/IProjectsFeed";
+import { IProjectFeeds, IProjectFeed, ITech, ITechStack } from "@/interface/IProjectsFeed";
 
-export const parseProject = ( projects: IProjects): IProject[] => {
-  let projectList: IProject[] = [];
+export const parseProject = ( projects: IProjectFeeds): IProjectFeed[] => {
+  let projectList: IProjectFeed[] = [];
   let idx = 1;
-  projects.results.map((project: IProject) => {
+  projects.results.map((project: IProjectFeed) => {
     projectList.push({
       idx: idx,
       id: project.id,

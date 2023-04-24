@@ -20,7 +20,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    callFetchRecentCommit(3);
+    callFetchRecentCommit(5);
   }, [])
   return (
     <> 

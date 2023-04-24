@@ -41,7 +41,7 @@ const NewsFeed = ({ name, ...rest }: commitType) => {
     <main className="w-full h-40 pt-6 pb-2 px-4 bg-white border border-gray-200 rounded-lg shadow mr-4 relative">
       <div className='flex items-center'>
         <Image src={ownerImgUrl || '/assets/Ghost.png '} alt="Profile" width={35} height={35}  className={`${isLoading ? 'hidden' : 'rounded-full'}`}/>
-        <Link href={'https://github.com/Resister-boy'}>
+        <Link href={'https://github.com/Resister-boy'} target='_blank'>
           <h5 className={`${isLoading ? 'hidden' : 'text-[#6F6F6F] hover:underline duration-150 mb-2 text-lg tracking-tight ml-6'}`}>{name}</h5>
         </Link>
         <div className={`${isLoading ? `${styles.skeleton_box}` : 'hidden'}`}/>

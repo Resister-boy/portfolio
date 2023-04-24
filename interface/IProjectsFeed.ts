@@ -1,8 +1,8 @@
-export interface IProjects {
-  results: IProject[];
+export interface IProjectFeeds {
+  results: IProjectFeed[];
 }
 
-export interface IProject {
+export interface IProjectFeed {
   idx: number;
   id: string;
   last_edited_time: string;

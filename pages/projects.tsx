@@ -3,12 +3,12 @@ import Head from 'next/head'
 import AnimatedText from '@/components/common/AnimatedText'
 import { NextPage } from 'next'
 import { ProjectFeed } from '@/components/common/ProjectFeed'
-import { IProject } from '@/interface/IProjectsFeed'
+import { IProjectFeed } from '@/interface/IProjectsFeed'
 import { parseProject } from '@/library/ParseProject'
 import ProjectSmallFeed from '@/components/common/ProjectSmallFeed'
 
 const Projects:NextPage<any> = ({ projects }) => {
-  const projectList: IProject[] = parseProject(projects);
+  const projectList: IProjectFeed[] = parseProject(projects);
   return (
     <>
       <Head>
@@ -19,11 +19,10 @@ const Projects:NextPage<any> = ({ projects }) => {
         <div className='pt-16'>
           <AnimatedText text="Imagination Trumps Knowledge!" className='text-6xl mt-12 text-[#333]'/>
           <div className='w-2/3 mt-8 mx-auto flex flex-wrap justify-between'>
-            {projectList.map((project: IProject, index: number) => {
+            {projectList.map((project: IProjectFeed, index: number) => {
               return (
                 project.idx % 3 === 1 ?
-                (
-                <ProjectFeed
+                (<ProjectFeed
                   key={index}
                   project={project}
                 />
