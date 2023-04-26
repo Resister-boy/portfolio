@@ -3,18 +3,18 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { GithubIcon } from '../icons';
 import DefaultButton  from './button/DefaultButton'
-import { IProject, ITech } from '@/interface/IProjectsFeed';
+import { IProjectFeed, ITech } from '@/interface/IProjectsFeed';
 import { motion } from 'framer-motion';
 import { parseText } from '@/library/ParseText';
 import TechBadge from './badge/TechBadge';
 
-export const ProjectFeed = ({ project }: IProject | any) => {
+export const ProjectFeed = ({ project }: IProjectFeed | any) => {
   return (
     <article className='w-full my-8 flex items-center relative justify-between border border-dark border-solid 
         rounded-3xl bg-light shadow-2xl p-8 rounded-br-3xl'>
       <div className='absolute top-0 left-0 w-[101%] h-[102%] rounded-3xl bg-dark rounded-br-3xl -z-10' />
       <Link href={`projects/${project.id}`} className='w-1/2 cursor-pointer overflow-hidden rounded-lg'>
-        <Image src={project.properties.Image} alt={project.properties.Name} className="w-full h-64" width={100} height={100} />
+        <Image src={project.properties.Image} alt={project.properties.Name} className="w-full h-64" width={500} height={250} />
       </Link>
       <div className='w-1/2 flex flex-col items-start justify-between pl-6'>
         <span className={`text-md ${project.properties.Type ? 'text-primary' : 'text-primaryDark'}`}>{

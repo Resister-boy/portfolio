@@ -1,5 +1,5 @@
 export const parseBlockMap = {
-  "paragraph": "text-md leading-10",
+  "paragraph": "text-md",
   "heading_1": "text-5xl font-bold",
   "heading_2": "text-2xl font-semibold",
   "heading_3": "text-xl font-semibold",

@@ -4,7 +4,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { ParsedUrlQuery } from "querystring";
 import Image from "next/image";
 import TechBadge from "@/components/common/badge/TechBadge";
-import { Key } from "react";
+import { Key, useState } from "react";
 import RenderBlock from "@/components/common/RenderBlock";
 import ProjectCard from "@/components/common/ProjectCard";
 
@@ -16,6 +16,7 @@ const ProjectDetail:NextPage<any> = ({id, project, blocks}) => {
   const title: string = `Project | ${project.properties.Title.rich_text[0].plain_text}`;
   const name: string = project.properties.Name.title[0].plain_text;
   const imageUrl: string = project.properties.Image.files[0].name;
+  const [IsHeading, setIsHeading] = useState<number[] | undefined[]>([undefined]);
   return (
     <>
       <Head>
@@ -35,14 +36,14 @@ const ProjectDetail:NextPage<any> = ({id, project, blocks}) => {
         <div className="mx-auto">
           <Image src={imageUrl} alt={title} width={1000} height={500} className="w-full rounded-3xl"/>
         </div>
-        <div className="flex">
-          <div className="w-2/3 mt-4">
+        <div className="flex justify-end">
+          <div className="w-2/3 mt-4 leading-loose">
             {blocks.map((block: any, index: any) => {
               return (
-                  <RenderBlock key={index} block={block} />
+                  <RenderBlock key={index} block={block} setIsHeading={setIsHeading} />
                 )})}
           </div>
-          <div className="w-1/3">
+          <div className="w-1/3 sticky">
             <ProjectCard />
           </div>
         </div>
