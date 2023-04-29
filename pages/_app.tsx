@@ -1,4 +1,5 @@
 import '@/styles/globals.css'
+import "react-notion/src/styles.css";
 import { Montserrat } from 'next/font/google'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'

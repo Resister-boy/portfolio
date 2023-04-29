@@ -1,22 +1,25 @@
+import { Key } from "react";
 import Head from "next/head";
-import { projectBlocks, projectDatabase, projectPage } from "@/library/ProjectNotion";
+import { projectDatabase, projectPage } from "@/library/ProjectNotion";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { ParsedUrlQuery } from "querystring";
 import Image from "next/image";
 import TechBadge from "@/components/common/badge/TechBadge";
-import { Key, useState } from "react";
-import RenderBlock from "@/components/common/RenderBlock";
+import { BlockMapType } from "react-notion";
 import ProjectCard from "@/components/common/ProjectCard";
+import { PageType } from "@/types/PageType";
+import { GetPageResponse } from "@notionhq/client/build/src/api-endpoints";
+import RenderBlocks from "@/components/common/RenderBlocks";
 
 interface IParams extends ParsedUrlQuery {
   id: string
 }
 
-const ProjectDetail:NextPage<any> = ({id, project, blocks}) => {
-  const title: string = `Project | ${project.properties.Title.rich_text[0].plain_text}`;
-  const name: string = project.properties.Name.title[0].plain_text;
-  const imageUrl: string = project.properties.Image.files[0].name;
-  const [IsHeading, setIsHeading] = useState<number[] | undefined[]>([undefined]);
+const ProjectDetail:NextPage<PageType & BlockMapType> = ({ page, blocks }) => {
+  const title = page.properties.Title.rich_text[0].plain_text;
+  const techStacks = page.properties.TechStacks.multi_select;
+  const name = page.properties.Name.title[0].plain_text;
+  const imageUrl = page.properties.Image.files[0].name;
   return (
     <>
       <Head>
@@ -28,22 +31,21 @@ const ProjectDetail:NextPage<any> = ({id, project, blocks}) => {
           <h1 className="w-4/5 text-5xl text-center font-semibold">{name}</h1>
         </div>
         <div className="flex justify-center itmes-center mt-16 mb-12">
-          {project.properties.TechStacks.multi_select.map((tech: { name: string }, index: Key | null | undefined) => {
+          {techStacks.map((tech: { name: string }, index: Key ) => {
             return (
               <TechBadge key={index} title={tech.name} />
           )})}
         </div>
         <div className="mx-auto">
-          <Image src={imageUrl} alt={title} width={1000} height={500} className="w-full rounded-3xl"/>
+          <Image src={imageUrl} alt={title} width={1000} height={500} className="w-full rounded-3xl shadow-xl"/>
         </div>
         <div className="flex justify-end">
-          <div className="w-2/3 mt-4 leading-loose">
-            {blocks.map((block: any, index: any) => {
-              return (
-                  <RenderBlock key={index} block={block} setIsHeading={setIsHeading} />
-                )})}
+          <div className="w-2/3 mt-12 px-20">
+            <RenderBlocks
+              blocks={blocks}
+            />
           </div>
-          <div className="w-1/3 sticky">
+          <div className="w-1/3">
             <ProjectCard />
           </div>
         </div>
@@ -54,14 +56,13 @@ const ProjectDetail:NextPage<any> = ({id, project, blocks}) => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { id } = context.params as IParams; 
-  const page_result = await projectPage(id); 
-  const { results } = await projectBlocks(id); 
+  const page: GetPageResponse = await projectPage(id); 
+  const blocks: BlockMapType = await fetch(`https://notion-api.splitbee.io/v1/page/${id}`).then(res => res.json());
   return {
     props: {
-      id: id,
-      project: page_result,
-      blocks: results
-    }
+      page,
+      blocks
+    },
   }
 }
 

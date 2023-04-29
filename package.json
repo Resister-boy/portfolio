@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fisch0920/use-dark-mode": "^2.4.0",
     "@notionhq/client": "^2.2.4",
     "@types/node": "18.15.11",
     "@types/react": "18.0.35",
@@ -20,12 +21,19 @@
     "eslint-config-next": "13.3.0",
     "framer-motion": "^10.12.2",
     "next": "13.3.0",
+    "notion-client": "^6.16.0",
     "octokit": "^2.0.14",
     "postcss": "8.4.21",
+    "prismjs": "^1.29.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-lottie-player": "^1.5.4",
+    "react-notion": "^0.10.0",
+    "react-notion-x": "^6.16.0",
     "tailwindcss": "3.3.1",
     "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "@types/prismjs": "^1.26.0"
   }
 }
