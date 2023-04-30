@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 
 const TechBadge = ({ title }: BadgeType) => {
   return (
-    <motion.div className={`flex justify-center items-center text-xs text-[#fff] py-1 px-2 mr-1 rounded-md ${BadgeColor[title]}`} whileHover={{y:-1}}>
+    <motion.div className={`flex justify-center items-center text-xs text-[#fff] py-0.5 px-2 mr-0.5 rounded-md ${BadgeColor[title]}`} whileHover={{y:-1}}>
       <Image src={BadgeIcon[title]} alt={title} title={title} width={13} height={13} className='mr-1.5'/>
       {title}
     </motion.div>

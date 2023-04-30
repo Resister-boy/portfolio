@@ -5,6 +5,7 @@ export type PropertyType = {
   Name: NotionNameType;
   Summary: NotionSummaryType;
   TechStacks: NotionTechStackType;
+  Categories: NotionCategoriesType;
   Title: NotionTitleType;
   Type: NotionCheckType;
 }
@@ -47,6 +48,15 @@ export type NotionSummaryType = {
 }
 
 export type NotionTechStackType = {
+  id: string;
+  multi_select: {
+    id: string;
+    name: string;
+  }[];
+  type: string;
+}
+
+export type NotionCategoriesType = {
   id: string;
   multi_select: {
     id: string;

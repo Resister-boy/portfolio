@@ -8,8 +8,8 @@ const Logo = () => {
   return (
     <div className='flex items-center justify-center mt-2'>
       <MotionLink href="/" 
-        className='w-16 h-16 bg-dark text-light flex items-center justify-center
-        rounded-full text-xl font-bold'
+        className='w-12 h-12 bg-light text-dark flex items-center justify-center border border-light
+        rounded-full text-sm font-bold hover:bg-[#333] hover:text-light duration-100' 
         whileHover={{scale: 1.2}}>
         RD
       </MotionLink>
